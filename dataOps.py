@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 import json
 import pymysql.cursors
 
@@ -49,6 +49,11 @@ def predict_price():
     predictor = dataOps()
     predicted_price = predictor.get_prediction(prediction_request['procedure'], prediction_request['state'])
     return jsonify(predicted_price)
+
+
+@app.route('/', methods=['POST', 'GET'])
+def run_app():
+    return render_template('testxhr.html')
 
 
 if __name__ == '__main__':
