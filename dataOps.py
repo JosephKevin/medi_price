@@ -27,8 +27,7 @@ class dataOps(object):
                                      db='medical_data',
                                      cursorclass=pymysql.cursors.DictCursor)
         # 2. get the prediction for given procedure and state
-        get_pred_cost_sql = "select `Average Total Payments` from price_prediction where `DRG Definition` = {procedure} and' \
-                            '`Provider State` = {provider_state}".format(procedure=procedure, provider_state='state')
+        get_pred_cost_sql = "select `Average Total Payments` from price_prediction where `DRG Definition` = \'{procedure}\' and `Provider State` = \'{provider_state}\' ".format(procedure=procedure, provider_state=state)
         try:
             with connection.cursor() as cursor:
                 cursor.execute(get_pred_cost_sql)
