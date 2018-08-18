@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+      <h1> test xhr</h1>
+    <script type="text/javascript">
+// for Flask
+// export FLASK_APP=hello.py
+// python -m flask run
+
+var data = JSON.stringify({
+  procedure: 'abcd',
+  state: 'NY'
+});
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener('readystatechange', function() {
+  if (this.readyState === 4) {
+    console.log(this.responseText);
+  }
+});
+
+// xhr.open('POST', 'http://127.0.0.1:5000/predict_price');
+
+xhr.open('POST', 'http://127.0.0.1:5000/predict_price');
+xhr.setRequestHeader('content-type', 'application/json');
+
+xhr.send(data);
+</script>
+  </body>
+</html>
