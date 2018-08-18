@@ -7,14 +7,17 @@
   <body>
       <h1> test xhr</h1>
     <script type="text/javascript">
-// for Flask
-// export FLASK_APP=hello.py
-// python -m flask run
+/* run Flask server in project root directory as follows
+export FLASK_APP=dataOps.py
+python3 -m flask run
+*/
 
-var data = JSON.stringify({
-  procedure: 'abcd',
-  state: 'NY'
-});
+// var data = JSON.stringify({
+//   procedure: 'abcd',
+//   state: 'NY'
+// });
+
+var data = JSON.stringify({"procedure":"sample", "state": "NY"});
 
 var xhr = new XMLHttpRequest();
 xhr.withCredentials = true;
