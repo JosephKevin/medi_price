@@ -2,7 +2,6 @@ import pickle
 import datetime
 import pymysql
 import json
-import os
 import pandas as pd
 
 
