@@ -11,13 +11,12 @@ class dataOps(object):
         with open(r'./creds.json') as f:
             self.credentials = json.load(f)
 
-    def get_prediction(self, procedure='sample', state='NY', model_file=r'./models/model_2018_08_18_05'):
+    def get_prediction(self, procedure='sample', state='NY'):
         """
         Function to get the predicted values for the given procedure and state from the DB
 
         :param procedure: the name of the procedure (eg: 'brain surgery')
         :param state: the state (eg: NY, NJ, AZ, etc)
-        :param model_file: the pickled model file location
         :return: json object of the structure {'predicted_cost': 5000}
             the predicted_cost is always in USD for now
         """
@@ -33,21 +32,5 @@ class dataOps(object):
                                                                                              state=state)
             return json.dumps({'message': fail_msg})
 
-""" Flask code for the API """
-app = Flask(__name__)
-
-@app.route('/predict_price', methods=['POST'])
-def predict_price():
-    prediction_request = request.get_json(force=True)
-    predictor = dataOps()
-    predicted_price = predictor.get_prediction(prediction_request['procedure'], prediction_request['state'])
-    return jsonify(predicted_price)
 
 
-@app.route('/', methods=['POST', 'GET'])
-def run_app():
-    return render_template('testxhr.html')
-
-
-if __name__ == '__main__':
-    app.run()
