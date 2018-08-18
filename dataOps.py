@@ -1,5 +1,6 @@
+from flask import Flask, request, jsonify, render_template
 import json
-import pymysql.cursors
+import pickle
 
 
 class dataOps(object):
@@ -19,23 +20,13 @@ class dataOps(object):
         :return: json object of the structure {'predicted_cost': 5000}
             the predicted_cost is always in USD for now
         """
-        # 1. connect to the DB
-        connection = pymysql.connect(host=self.credentials['host'],
-                                     user=self.credentials['username'],
-                                     password=self.credentials['password'],
-                                     db='medical_data',
-                                     cursorclass=pymysql.cursors.DictCursor)
-        # 2. get the prediction for given procedure and state
-        get_pred_cost_sql = "select `Average Total Payments` from price_prediction where `DRG Definition` = \'{procedure}\' and `Provider State` = \'{provider_state}\' ".format(procedure=procedure, provider_state=state)
-        try:
-            with connection.cursor() as cursor:
-                cursor.execute(get_pred_cost_sql)
-                result = cursor.fetchone()
-        finally:
-            connection.close()
-        # 3. return the predicted_cost
-        if result:
-            return json.dumps({'predicted_cost': result['Average Total Payments'], 'message': 'success'})
+        # get the pickled model file
+        pred_model = pickle.load(model_file)
+        # use the model file to make prediction
+        predicted_cost = pred_model.predict([procedure, state])
+        # return prediction
+        if predicted_cost:
+            return json.dumps({'predicted_cost': predicted_cost, 'message': 'success'})
         else:
             fail_msg = 'No data in the predictions table for {procedure} and {state}'.format(procedure=procedure,
                                                                                              state=state)
