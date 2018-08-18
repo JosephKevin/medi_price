@@ -11,12 +11,13 @@ class dataOps(object):
         with open(r'./creds.json') as f:
             self.credentials = json.load(f)
 
-    def get_prediction(self, procedure='sample', state='NY'):
+    def get_prediction(self, procedure='sample', state='NY', model_file=r'./models/model_2018_08_18_05'):
         """
         Function to get the predicted values for the given procedure and state from the DB
 
         :param procedure: the name of the procedure (eg: 'brain surgery')
         :param state: the state (eg: NY, NJ, AZ, etc)
+        :param model_file: the pickled model file location
         :return: json object of the structure {'predicted_cost': 5000}
             the predicted_cost is always in USD for now
         """
@@ -32,5 +33,8 @@ class dataOps(object):
                                                                                              state=state)
             return json.dumps({'message': fail_msg})
 
+    def get_predictions_all(self, procedure='sample', model_file=r'./models/model_2018_08_18_05'):
+
+        pass
 
 
