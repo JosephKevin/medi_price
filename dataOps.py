@@ -35,7 +35,12 @@ class dataOps(object):
         finally:
             connection.close()
         # 3. return the predicted_cost
-        return json.dumps({'predicted_cost': result['Average Total Payments']})
+        if result.get('Average Total Payments', ''):
+            return json.dumps({'predicted_cost': result['Average Total Payments'], 'message': 'success'})
+        else:
+            fail_msg = 'No data in the predictions table for {procedure} and {state}'.format(procedure=procedure, provider_state=state)
+            return json.dumps({'message': fail_msg})
+
 
 
 """ Flask code for the API """
