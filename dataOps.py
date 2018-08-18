@@ -33,10 +33,8 @@ class dataOps(object):
                                                                                              state=state)
             return json.dumps({'message': fail_msg})
 
-
 """ Flask code for the API """
 app = Flask(__name__)
-
 
 @app.route('/predict_price', methods=['POST'])
 def predict_price():
