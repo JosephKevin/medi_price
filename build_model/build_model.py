@@ -50,7 +50,7 @@ class build_model(object):
         model_file = os.path.store(model_store, model_file_name)
         pred_model = ''
         filehandler = open(model_file, "wb")
-        pred_model_pickle = pickle.dump(obj=pred_model, file=filehandler)
+        pickle.dump(obj=pred_model, file=filehandler)
 
 if __name__ == '__main__':
     bm = build_model()
