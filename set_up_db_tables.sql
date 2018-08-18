@@ -20,7 +20,8 @@ create table medical_data.raw_data (
 -- loading raw data
 LOAD DATA LOCAL INFILE '/Users/joseph/Downloads/Inpatient_Prospective_Payment_System__IPPS__Provider_Summary_for_the_Top_100_Diagnosis-Related_Groups__DRG__-_FY2011.csv'
 INTO TABLE medical_data.raw_data FIELDS TERMINATED BY ','
- IGNORE 1 LINES;
+ENCLOSED BY '"'
+IGNORE 1 LINES;
 
 -- create predicted value table
 create table medical_data.price_prediction (
