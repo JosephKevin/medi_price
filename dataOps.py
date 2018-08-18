@@ -1,6 +1,6 @@
-from flask import Flask, request, jsonify, render_template
 import json
 import pickle
+import pandas as pd
 
 
 class dataOps(object):
@@ -10,6 +10,11 @@ class dataOps(object):
         """
         with open(r'./creds.json') as f:
             self.credentials = json.load(f)
+
+    def get_model(self, model_location=r'./models/model_2018_08_18_19'):
+        file = open(model_location, 'rb')
+        data_df = pickle.load(file)
+        return data_df
 
     def get_prediction(self, procedure='sample', state='NY'):
         """
@@ -21,9 +26,9 @@ class dataOps(object):
             the predicted_cost is always in USD for now
         """
         # get the pickled model file
-        pred_model = pickle.load(model_file)
+        pred_model = self.get_model()
         # use the model file to make prediction
-        predicted_cost = pred_model.predict([procedure, state])
+        predicted_cost = pred_model[procedure][state]
         # return prediction
         if predicted_cost:
             return json.dumps({'predicted_cost': predicted_cost, 'message': 'success'})
