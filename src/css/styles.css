@@ -28,6 +28,9 @@ body {
   vertical-align: middle;
 }
 
+#mapid {
+  height: 400px;
+}
 
 #heading-title {
   font-size: 5em;
