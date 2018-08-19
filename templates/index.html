@@ -1,0 +1,56 @@
+<html>
+    <head>
+      <title>MediPricer</title>
+      <meta charset="UTF-8">
+      <link href='https://fonts.googleapis.com/css?family=Roboto+Mono:400,100,300' rel='stylesheet' type='text/css'>
+      <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" type="text/css" media="screen" title="no title" charset="utf-8">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+      <link rel="stylesheet" href="css/styles.css" type="text/css" media="screen" title="no title" charset="utf-8">
+      <meta name="viewport" content="initial-scale=1">
+    </head>
+
+  <body>
+    <div class="container-fluid wrapper">
+        <!-- Header -->
+      <div class= "titles page-header text-center">
+        <div id='heading-title'>MediPricer</div>
+        <div id='heading-subtitle'>Visualize Your Data</div>
+      </div>
+
+        <!-- New City Dock -->
+        <!-- city form is wrapper that wraps around measurement toggle and search bar -->
+        <form class='text-center' id='city-form'>
+          <label>Enter your Procedure:</label>
+          <!-- wraps around seach area and measurements -->
+          <div id="search-space">
+            <!-- search area -->
+            <input name="city" placeholder=" " id="city-name">
+            <i id="submit" class="fa fa-2x fa-search" aria-hidden="true"></i>
+          </div>
+
+          <!-- use rows to make it responsive -->
+          <!-- measurement toggle, still part of search space -->
+          <div id="measurement">
+            <div class="flip-switch-container">
+              <!-- one is the slider spot -->
+              <div class="slider">
+                <!-- the other is the switch -->
+                <!-- value holds state -->
+                <div id="widget-2" class="flipswitch" value="true"></div>
+              </div>
+            </div>
+          </div>
+        </form>
+
+
+        <div id="map">
+          
+        </div>
+
+    </div>
+
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <script src="js/app.js" type="text/javascript" charset="utf-8"></script>
+    </body>
+</html>

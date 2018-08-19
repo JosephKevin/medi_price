@@ -12,12 +12,10 @@ export FLASK_APP=dataOps.py
 python3 -m flask run
 */
 
-// var data = JSON.stringify({
-//   procedure: 'abcd',
-//   state: 'NY'
-// });
-
-var data = JSON.stringify({"procedure":"sample", "state": "NY"});
+var data = JSON.stringify({
+  procedure: 'sample',
+  state: 'NY'
+});
 
 var xhr = new XMLHttpRequest();
 xhr.withCredentials = true;
