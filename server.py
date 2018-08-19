@@ -24,7 +24,7 @@ def predict_price():
 def predict_price_all_states():
     prediction_request = request.get_json(force=True)
     predictor = dataOps()
-    predicted_price_all = predictor.get_predictions_all(prediction_request['procedure'])
+    predicted_all_price = predictor.get_all_predictions(prediction_request['procedure'])
     return jsonify(predicted_price_all)
 @app.route('/', methods=['POST', 'GET'])
 def run_app():

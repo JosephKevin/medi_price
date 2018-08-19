@@ -37,7 +37,18 @@ class dataOps(object):
                                                                                              state=state)
             return json.dumps({'message': fail_msg})
 
-    def get_predictions_all(self, procedure='sample', model_file=r'./models/model_2018_08_18_05'):
+    def get_all_predictions(self, procedure='sample', model_file=r'./models/model_2018_08_18_05'):
+        # get the pickled model file
+        pred_model = self.get_model()
+        # use the model file to make prediction
+        predicted_cost = pred_model[procedure]
+        # return prediction
+        if predicted_cost:
+            return json.dumps(predicted_cost)
+        else:
+            fail_msg = 'No data in the predictions table for {procedure} and {state}'.format(procedure=procedure,
+                                                                                             state=state)
+            return json.dumps({'message': fail_msg})
 
         pass
 
