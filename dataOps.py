@@ -32,7 +32,11 @@ class dataOps(object):
         # get the pickled model file
         pred_model = self.get_model()
         # use the model file to make prediction
-        predicted_cost = pred_model[procedure][state]
+        # check if the dataframe has that procedure and state
+        try:
+            predicted_cost = pred_model[procedure][state]
+        except:
+            return json.dumps({'message': 'failed'})
         # return prediction
         if predicted_cost:
             return json.dumps({'predicted_cost': predicted_cost, 'message': 'success'})
