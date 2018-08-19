@@ -34,7 +34,7 @@ def run_app():
     It renders the frontend content.
     :return: HTML page
     """
-    return render_template('testxhr.html')
+    return render_template('index.html')
 
 
 if __name__ == '__main__':
