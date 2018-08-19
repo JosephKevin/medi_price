@@ -15,7 +15,7 @@ class dataOps(object):
         #ToDo: get the lates model name
         pass
 
-    def get_model(self, model_location=r'./models/model_2018_08_18_20'):
+    def get_model(self, model_location=r'./models/model_2018_08_18_19'):
         file = open(model_location, 'rb')
         data_df = pickle.load(file)
         return data_df
