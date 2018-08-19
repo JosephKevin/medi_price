@@ -15,7 +15,7 @@ class dataOps(object):
         #ToDo: get the lates model name
         pass
 
-    def get_model(self, model_location=r'./models/model_2018_08_18_19'):
+    def get_model(self, model_location=r'./models/model_2018_08_18_20'):
         file = open(model_location, 'rb')
         data_df = pickle.load(file)
         return data_df
@@ -60,7 +60,7 @@ class dataOps(object):
         predicted_cost = pred_model[procedure].to_json()
         # return prediction
         if predicted_cost:
-            return json.dumps(predicted_cost)
+            return predicted_cost
         else:
             fail_msg = 'No data in the predictions table for {procedure}'.format(procedure=procedure)
 
