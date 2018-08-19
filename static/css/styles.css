@@ -52,12 +52,7 @@ ul {
   list-style-type: none;
 }
 
-/*City form, wrapper around the search field + mesurements toggle*/
-#city-form {
-
-}
-
-#city-name {
+.input-name {
   color: black;
   background-color: white;
   height: 15.5%;
@@ -66,7 +61,7 @@ ul {
   margin-bottom: 5%;
 }
 
-#city-name:focus {
+.input-name:focus {
   outline: none;
   box-shadow: 0 0 10px rgba(49, 79, 111, 0.2);
 }
