@@ -1,6 +1,6 @@
+from flask import Flask, request, jsonify, render_template
 import json
 import pickle
-import pandas as pd
 
 
 class dataOps(object):
@@ -41,5 +41,8 @@ class dataOps(object):
                                                                                              state=state)
             return json.dumps({'message': fail_msg})
 
+    def get_predictions_all(self, procedure='sample', model_file=r'./models/model_2018_08_18_05'):
+
+        pass
 
 
