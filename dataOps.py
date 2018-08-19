@@ -45,8 +45,25 @@ class dataOps(object):
                                                                                              state=state)
             return json.dumps({'message': fail_msg})
 
-    def get_predictions_all(self, procedure='sample', model_file=r'./models/model_2018_08_18_05'):
+    def get_all_predictions(self, procedure='sample'):
+        """
+        Function to get the predicted values for the given procedure and state from the DB
 
-        pass
+        :param procedure: the name of the procedure (eg: 'brain surgery')
+        :param state: the state (eg: NY, NJ, AZ, etc)
+        :return: json object of the structure {'predicted_cost': 5000}
+            the predicted_cost is always in USD for now
+        """
+        # get the pickled model file
+        pred_model = self.get_model()
+        # use the model file to make prediction
+        predicted_cost = pred_model[procedure].to_json()
+        # return prediction
+        if predicted_cost:
+            return json.dumps(predicted_cost)
+        else:
+            fail_msg = 'No data in the predictions table for {procedure}'.format(procedure=procedure)
+
+            return json.dumps({'message': fail_msg})
 
 
