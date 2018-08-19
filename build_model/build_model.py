@@ -40,7 +40,6 @@ class build_model(object):
         filehandler = open(model_file, "wb")
         pickle.dump(obj=pred_model, file=filehandler)
 
-
     def build_model(self, db_schema, raw_data, input_features, target, creds_file, model_type='segmentation'):
         """
         Function to handle model building
@@ -88,6 +87,7 @@ class build_model(object):
         # 4. do segmentation
         segment_df = raw_data_df.groupby(input_features, axis=0)[target].mean()
         return {'model': segment_df, 'message': 'success'}
+
 
 
 if __name__ == '__main__':

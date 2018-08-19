@@ -22,6 +22,13 @@ def predict_price():
 
 @app.route('/predict_price_all', methods=['POST'])
 def predict_price_all_states():
+    """
+    This function returns the predicted price for all States from the ML model to the frontend.
+    It takes a json object as a request body and this JSON object contains the following parameters:
+        1. Procedure: The medical procedure the patient wants to know the cost of.
+
+    :return: the predicted price from the ML model
+    """
     prediction_request = request.get_json(force=True)
     predictor = dataOps()
     predicted_all_price = predictor.get_all_predictions(prediction_request['procedure'])
