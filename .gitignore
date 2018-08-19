@@ -111,3 +111,5 @@ playground/
 
 # JS
 node_modules/
+
+./creds.json
